@@ -18,7 +18,7 @@ public class FindSoftAssertionAndDragNdrop {
     //Lesson #4, homework #2
     //find "Using JUnit5 on github
     @Test
-    void shouldFindSelenideOnGithub() {
+    void test01_findSelenideOnGithub() {
 
         /*SCENARIO
         //OPEN github.com
@@ -48,7 +48,7 @@ public class FindSoftAssertionAndDragNdrop {
         $("[href=\"/selenide/selenide/wiki\"").click();
 
         //FIND Soft assertion and CLICK
-        $("[href=\"/selenide/selenide/wiki/SoftAssertions\"").click();
+        $("[href=\"/selenide/selenide/wiki/SoftAssertions\"]").click();
 
         //FIND in the Example "Using JUnit5"
         $("[start=\"3\"]").shouldHave(text("Using JUnit5 extend test class"));
@@ -58,7 +58,7 @@ public class FindSoftAssertionAndDragNdrop {
     //Lesson #4, homework #3
     //Simply drag'n'drop with selenide actions
     @Test
-    void simplyDragNdrop() {
+    void test02_simplyDragNdrop() {
 
         /*SCENARIO
         //OPEN https://the-internet.herokuapp.com/drag_and_drop
@@ -66,18 +66,15 @@ public class FindSoftAssertionAndDragNdrop {
         //CHECK exchange
         */
 
-        //OPEN https://the-internet.herokuapp.com/drag_and_drop
-//        open("https://the-internet.herokuapp.com/drag_and_drop");
-//
-//        //FIND box A and MOVE them to box B
-//        $("#column-a").dragAndDropTo($("#column-b"));
-//
-//        //CHECK exchange
-//        $("#column-a").$(shouldHave()
-//
-//        sleep(3000);
 
+        //OPEN https://the-internet.herokuapp.com/drag_and_drop
+        open("https://the-internet.herokuapp.com/drag_and_drop");
+
+        //FIND box A and MOVE them to box B
+        $("#column-a").dragAndDropTo($("#column-b"));
+
+        //CHECK exchange
+        $("#column-a > header").shouldHave(text("B"));
+        $("#column-b > header").shouldHave(text("A"));
     }
 }
-
-
