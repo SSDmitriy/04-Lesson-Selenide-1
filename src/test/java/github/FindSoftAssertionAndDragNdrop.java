@@ -5,6 +5,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.Condition.text;
+import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 
 
@@ -39,19 +40,20 @@ public class FindSoftAssertionAndDragNdrop {
 
         //FIND selenide/selenide link and CLICK
         //$$ - поиск массива
-        $$("ul.repo-list").get(0).$("a").click();
+        $("ul.repo-list a").click();
 
         //CHECK that selenide/selenide contain in the header
         $("h1").shouldHave(text("selenide / selenide"));
 
         //FIND wiki and CLICK
-        $("[href=\"/selenide/selenide/wiki\"").click();
+        $(byText("Wiki")).click();
 
         //FIND Soft assertion and CLICK
-        $("[href=\"/selenide/selenide/wiki/SoftAssertions\"]").click();
+        $(".wiki-more-pages-link").$("[type=button]").click();
+        $(".wiki-more-pages").$(byText("SoftAssertions")).click();
 
         //FIND in the Example "Using JUnit5"
-        $("[start=\"3\"]").shouldHave(text("Using JUnit5 extend test class"));
+        $("#wiki-body").shouldHave(text("Using JUnit5 extend test class"));
     }
 
 
